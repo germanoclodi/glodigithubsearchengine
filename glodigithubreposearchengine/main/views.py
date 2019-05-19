@@ -4,17 +4,27 @@ from .models import GithubRepo
 from django.http import HttpResponse
 from django.shortcuts import render
 
+
 def search_github_repo(search_by_term, search_by_topic):
+    """ This function is used to return 5 GitHub's repo's name and description,
+    when provided the desired desired key-word - search_by_term - and the
+    desired programming language - search_y_topic -
+
+    The function returns two arrays:
+    - _name_response - the 5 user/name repo info
+    - _desc_response - the 5 repo description, respectively to _name_response order """
 
     _name_response = []
     _desc_response = []
 
+    # Connecting with the github's API searching through the repositories by the provided term and topic
     search_by_term = search_by_term
     search_by_topic = search_by_topic
     _r = requests.get('https://api.github.com/search/repositories?q=' + search_by_term +
                       '+language:' + search_by_topic +
                       '&sort=stars&order=desc')
 
+    # Loading the JSON response of the request if the request is okay (status_code=200)
     if _r.ok:
         _item = json.loads(_r.text)
         try:
@@ -67,8 +77,12 @@ def search_github_repo(search_by_term, search_by_topic):
 
 def index(request):
     if request.method == 'POST':
+        # Getting through the POST request the input box value, which is the search_by_term value
         search_by_term_inputbox = request.POST.get('search_by_term_inputbox')
 
+        """ Invoking the search function for each programming language.
+         Returning it zipped to pass as parameter as context to the view.
+         Returning it zipped in a second variable to use as consumable parameter to the database insertion """
         _name_list, _desc_list = search_github_repo(search_by_term_inputbox, 'python')
         python_return_list = zip(_name_list, _desc_list)
         python_return_list_d = zip(_name_list, _desc_list)
@@ -89,6 +103,7 @@ def index(request):
         c_return_list = zip(_name_list, _desc_list)
         c_return_list_d = zip(_name_list, _desc_list)
 
+        # Defining context to be passed to the view
         context = {
             'python_return_list': python_return_list,
             'ruby_return_list': ruby_return_list,
@@ -97,6 +112,7 @@ def index(request):
             'c_return_list': c_return_list,
         }
 
+        # Iterating through the list(zip) object to save each item to the database
         for l in list(python_return_list_d):
             desc = l[1]
             if desc is None:
@@ -135,6 +151,7 @@ def index(request):
         return HttpResponse(render(request, 'main/index.html', context))
 
     else:
+        # Open the view as empty the first time, when the request isn't POST
         context = {
             'return_list': '',
         }

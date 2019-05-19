@@ -16,6 +16,7 @@
 <br>
 
 <p>Type below your desired key-word</p>
+<!--  Form to pass to the back-end the search_by_term value  -->
 <form method="post" role="form">
     {% csrf_token %}
     <input type="text"  name="search_by_term_inputbox" value="" >
@@ -25,6 +26,7 @@
 <p>Hover the results to show it's description.</p>
 <p>Click on the result's link to redirect the page to the GitHub repository.</p>
 <br>
+<!-- Listing for each programming language the return_list provided by the context -->
 <p>Python</p>
 {% if python_return_list %}
     <ul class="list-group">
@@ -33,6 +35,7 @@
     {% endfor %}
     </ul>
 {% else %}
+    <!-- If no context or empty context is provided -->
     <p>No polls are available.</p>
 {% endif %}
 
@@ -85,6 +88,7 @@
 {% endif %}
 </div>
 
+<!-- Tooltip javascript -->
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
