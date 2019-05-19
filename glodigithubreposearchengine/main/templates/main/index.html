@@ -1,0 +1,66 @@
+<form method="post" role="form">
+    {% csrf_token %}
+    <input type="text"  name="search_by_term_inputbox" value="" >
+    <input type="submit" value="Search & Save to Database"/>
+</form>
+
+<br>
+<p>Python</p>
+{% if python_return_list %}
+    <ul>
+    {% for i in python_return_list %}
+        <li>{{ i.0 }} - {{ i.1 }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<br>
+<p>Ruby</p>
+{% if ruby_return_list %}
+    <ul>
+    {% for i in ruby_return_list %}
+        <li>{{ i.0 }} - {{ i.1 }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<br>
+<p>Java</p>
+{% if java_return_list %}
+    <ul>
+    {% for i in java_return_list %}
+        <li>{{ i.0 }} - {{ i.1 }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<br>
+<p>Elixir</p>
+{% if elixir_return_list %}
+    <ul>
+    {% for i in elixir_return_list %}
+        <li>{{ i.0 }} - {{ i.1 }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<br>
+<p>C</p>
+{% if c_return_list %}
+    <ul>
+    {% for i in c_return_list %}
+        <li>{{ i.0 }} - {{ i.1 }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+

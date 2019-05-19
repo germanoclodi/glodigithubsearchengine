@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GitHub Repository Search Engine by Germano Lodi</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div style="margin: 15px">
+<h2>GitHub Repository Search Engine</h2>
+<h5>Developed in Python/Django by Germano Lodi</h5>
+<br>
+
+<p>Type below your desired key-word</p>
+<form method="post" role="form">
+    {% csrf_token %}
+    <input type="text"  name="search_by_term_inputbox" value="" >
+    <input type="submit" value="Search & Save to Database"/>
+</form>
+<br>
+<p>Hover the results to show it's description.</p>
+<br>
+<p>Python</p>
+{% if python_return_list %}
+    <ul class="list-group">
+    {% for i in python_return_list %}
+        <li class="list-group-item list-group-item-action list-group-item-info" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<br>
+<p>Ruby</p>
+{% if ruby_return_list %}
+    <ul class="list-group">
+    {% for i in ruby_return_list %}
+        <li class="list-group-item list-group-item-action list-group-item-danger" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<br>
+<p>Java</p>
+{% if java_return_list %}
+    <ul class="list-group">
+    {% for i in java_return_list %}
+        <li class="list-group-item list-group-item-action list-group-item-warning" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<br>
+<p>Elixir</p>
+{% if elixir_return_list %}
+    <ul class="list-group">
+    {% for i in elixir_return_list %}
+        <li class="list-group-item list-group-item-action list-group-item-success" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<br>
+<p>C</p>
+{% if c_return_list %}
+    <ul class="list-group">
+    {% for i in c_return_list %}
+        <li class="list-group-item list-group-item-action list-group-item-primary" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</div>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+</body>
+</html>
