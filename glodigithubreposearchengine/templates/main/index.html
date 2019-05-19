@@ -23,12 +23,13 @@
 </form>
 <br>
 <p>Hover the results to show it's description.</p>
+<p>Click on the result's link to redirect the page to the GitHub repository.</p>
 <br>
 <p>Python</p>
 {% if python_return_list %}
     <ul class="list-group">
     {% for i in python_return_list %}
-        <li class="list-group-item list-group-item-action list-group-item-info" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+        <li class="list-group-item list-group-item-action list-group-item-info" style="max-width: 500px"><a href="https://github.com/{{i.0}}" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -40,7 +41,7 @@
 {% if ruby_return_list %}
     <ul class="list-group">
     {% for i in ruby_return_list %}
-        <li class="list-group-item list-group-item-action list-group-item-danger" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+        <li class="list-group-item list-group-item-action list-group-item-danger" style="max-width: 500px"><a href="https://github.com/{{i.0}}" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -52,7 +53,7 @@
 {% if java_return_list %}
     <ul class="list-group">
     {% for i in java_return_list %}
-        <li class="list-group-item list-group-item-action list-group-item-warning" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+        <li class="list-group-item list-group-item-action list-group-item-warning" style="max-width: 500px"><a href="https://github.com/{{i.0}}" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -64,7 +65,7 @@
 {% if elixir_return_list %}
     <ul class="list-group">
     {% for i in elixir_return_list %}
-        <li class="list-group-item list-group-item-action list-group-item-success" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+        <li class="list-group-item list-group-item-action list-group-item-success" style="max-width: 500px"><a href="https://github.com/{{i.0}}" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -76,7 +77,7 @@
 {% if c_return_list %}
     <ul class="list-group">
     {% for i in c_return_list %}
-        <li class="list-group-item list-group-item-action list-group-item-primary" style="max-width: 500px"><a href="#" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
+        <li class="list-group-item list-group-item-action list-group-item-primary" style="max-width: 500px"><a href="https://github.com/{{i.0}}" data-toggle="tooltip" data-placement="right" title="{{i.1}}">{{ i.0 }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
