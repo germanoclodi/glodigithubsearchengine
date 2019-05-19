@@ -17,28 +17,48 @@ def search_github_repo(search_by_term, search_by_topic):
 
     if _r.ok:
         _item = json.loads(_r.text)
-        _name = _item['items'][0]['owner']['login'] + '/' + _item['items'][0]['name']
-        _desc = _item['items'][0]['description']
+        try:
+            _name = _item['items'][0]['owner']['login'] + '/' + _item['items'][0]['name']
+            _desc = _item['items'][0]['description']
+        except IndexError:
+            _name = 'NOT_FOUND'
+            _desc = 'NOT_FOUND'
         _name_response.append(_name)
         _desc_response.append(_desc)
 
-        _name = _item['items'][1]['owner']['login'] + '/' + _item['items'][1]['name']
-        _desc = _item['items'][1]['description']
+        try:
+            _name = _item['items'][1]['owner']['login'] + '/' + _item['items'][1]['name']
+            _desc = _item['items'][1]['description']
+        except IndexError:
+            _name = 'NOT_FOUND'
+            _desc = 'NOT_FOUND'
         _name_response.append(_name)
         _desc_response.append(_desc)
 
-        _name = _item['items'][2]['owner']['login'] + '/' + _item['items'][2]['name']
-        _desc = _item['items'][2]['description']
+        try:
+            _name = _item['items'][2]['owner']['login'] + '/' + _item['items'][2]['name']
+            _desc = _item['items'][2]['description']
+        except IndexError:
+            _name = 'NOT_FOUND'
+            _desc = 'NOT_FOUND'
         _name_response.append(_name)
         _desc_response.append(_desc)
 
-        _name = _item['items'][3]['owner']['login'] + '/' + _item['items'][3]['name']
-        _desc = _item['items'][3]['description']
+        try:
+            _name = _item['items'][3]['owner']['login'] + '/' + _item['items'][3]['name']
+            _desc = _item['items'][3]['description']
+        except IndexError:
+            _name = 'NOT_FOUND'
+            _desc = 'NOT_FOUND'
         _name_response.append(_name)
         _desc_response.append(_desc)
 
-        _name = _item['items'][4]['owner']['login'] + '/' + _item['items'][4]['name']
-        _desc = _item['items'][4]['description']
+        try:
+            _name = _item['items'][4]['owner']['login'] + '/' + _item['items'][4]['name']
+            _desc = _item['items'][4]['description']
+        except IndexError:
+            _name = 'NOT_FOUND'
+            _desc = 'NOT_FOUND'
         _name_response.append(_name)
         _desc_response.append(_desc)
 
